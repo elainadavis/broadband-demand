@@ -22,24 +22,21 @@
         <div class="addressLookupBox" v-bind:class="{ visible: geoLookupResults.length }">
           <h4>Please select your verified address, you will then be prompted to run a speed test to check your internet connection:</h4>
           <ul class="addresslookup" v-for="result in geoLookupResults" v-bind:key="result">
-            <li v-on:click="addressVerified(result)" v-html="result.formatted_address"></li>
+            <li v-on:click="addressVerified(result); initializeForm()" v-html="result.formatted_address"></li>
           </ul>
         </div>
       </div>
-      <div id="device-wifi" style="display: none;" class="speed-msg">
-        <h4>Internet speed test results may vary based on network congestion and available bandwidth. For the most accurate results, please ensure that your device is connected to Wifi and that all other applications and programs are closed.</h4>
-      </div>
-      <div id="sc-container" style="display: none;">
+      <!-- <div id="sc-container" style="display: none;">
         <div id="sc-branding" class="sc-bb">
           <a target="_blank" href="https://www.speedcheck.org/">
             <img src="https://cdn.speedcheck.org/branding/speedcheck-logo-18.png" alt="Speedcheck" />
           </a>
         </div>    
       </div>
-      <script src="https://cdn.speedcheck.org/basic/scbjs.min.js" async></script>
-      <div>
+      <script src="https://cdn.speedcheck.org/basic/scbjs.min.js" async></script> -->
+      <!-- <div>
         <button id="no_intBtn" class="no-internet" style="display: none;" @click="initializeForm">I do not have Internet access at my residence</button>
-      </div>
+      </div> -->
     </div>
     <div id="survey-panel" class="panel panel-white panel-no-border hide">
       <div id="survey123-webform" class="panel panel-no-padding panel-no-border"></div>
@@ -100,7 +97,7 @@ export default {
       } else {
         this.$axios
           .get(
-            `https://api.geocod.io/v1.6/geocode?q=${vm.user_address},${vm.user_zip}&api_key=f34d2499ff2f45d5f15d5f485ff8f0924452f83`
+            `https://api.geocod.io/v1.6/geocode?q=${vm.user_address},${vm.user_zip}&api_key=52340f2203d0f835addd6d3a5f6a522586825d2`
           )
           .then(function(response) {
             if (
@@ -123,9 +120,9 @@ export default {
       let vm = this;
       vm.verified_address = verifiedResultObj;
       document.getElementById("addressLookupContainer").style.display = "none";
-      document.getElementById("device-wifi").style.display = "block";
-      document.getElementById("no_intBtn").style.display = "block";
-      document.getElementById("sc-container").style.display = "block";
+      // document.getElementById("device-wifi").style.display = "block";
+      // document.getElementById("no_intBtn").style.display = "block";
+      // document.getElementById("sc-container").style.display = "block";
     },
     initializeForm: function(speedData) {
       let vm = this;
@@ -142,18 +139,9 @@ export default {
           // ANSWER INTERNET SPEED QUESTION WITH CONNECTION SPEED INFO //
           //
           survey123WebForm.setQuestionValue({
-            download_speed: speedData.downloadValue,
-            upload_speed: speedData.uploadValue,
-            latency: speedData.pingValue,
-            internet_browser: speedData.browser.browser,
-            operating_sys: speedData.browser.os,
             full_address: vm.verified_address.formatted_address,
             user_lat: vm.verified_address.location.lat,
             user_long: vm.verified_address.location.lng,
-            user_device: speedData.browser.device,
-            user_isp: speedData.isp.isp,
-            isp_lat: speedData.isp.lat,
-            isp_long: speedData.isp.lon,
           });
         },
         onFormSubmitted: function scrollWin() {
