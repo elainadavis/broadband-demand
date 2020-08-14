@@ -3,6 +3,7 @@
     <div class="form-container" id="speedcheckcontainer">
       <div class="introtitle">
         <h1>Community Survey</h1>
+        <br>
         <h3 v-html="surveyData.intro"></h3>
       </div>
       <div id="addressLookupContainer">
@@ -26,18 +27,6 @@
           </ul>
         </div>
       </div>
-      <!-- <div id="sc-container" style="display: none;">
-        <div id="sc-branding" class="sc-bb">
-          <a target="_blank" href="https://www.speedcheck.org/">
-            <img src="https://cdn.speedcheck.org/branding/speedcheck-logo-18.png" alt="Speedcheck" />
-          </a>
-        </div>    
-      </div>
-      <script src="https://cdn.speedcheck.org/basic/scbjs.min.js" async></script> -->
-      <!-- <div>
-        <button id="no_intBtn" class="no-internet" style="display: none;" @click="initializeForm">I do not have Internet access at my residence</button>
-      </div> -->
-    </div>
     <div id="survey-panel" class="panel panel-white panel-no-border hide">
       <div id="survey123-webform" class="panel panel-no-padding panel-no-border"></div>
     </div>
@@ -120,9 +109,6 @@ export default {
       let vm = this;
       vm.verified_address = verifiedResultObj;
       document.getElementById("addressLookupContainer").style.display = "none";
-      // document.getElementById("device-wifi").style.display = "block";
-      // document.getElementById("no_intBtn").style.display = "block";
-      // document.getElementById("sc-container").style.display = "block";
     },
     initializeForm: function(speedData) {
       let vm = this;
