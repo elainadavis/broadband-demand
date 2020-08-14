@@ -27,6 +27,7 @@
           </ul>
         </div>
       </div>
+    </div>
     <div id="survey-panel" class="panel panel-white panel-no-border hide">
       <div id="survey123-webform" class="panel panel-no-padding panel-no-border"></div>
     </div>
