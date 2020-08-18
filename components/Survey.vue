@@ -21,7 +21,7 @@
           v-bind:class="{ visible: address_error }"
         >{{address_error}}</div>
         <div class="addressLookupBox" v-bind:class="{ visible: geoLookupResults.length }">
-          <h4>Please select your verified address and load the survey.</h4>
+          <h4>Please select your verified address to load the survey.</h4>
           <ul class="addresslookup" v-for="result in geoLookupResults" v-bind:key="result">
             <li v-on:click="addressVerified(result); initializeForm()" v-html="result.formatted_address"></li>
           </ul>
