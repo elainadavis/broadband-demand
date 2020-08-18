@@ -97,7 +97,16 @@ export default {
               vm.address_error =
                 "Unfortunately we weren't able to find results for that address/zipcode.  Please ensure your information is entered correctly.";
             }
-            vm.geoLookupResults = response.data.results;
+            let reducedArray = response.data.results.reduce((acc, current) => {
+              let x = acc.find(item => item.address_components.street === current.address_components.street);
+              let y = acc.find(item => item.address_components.number === current.address_components.number);
+              if (!(x && y)) {
+                return acc.concat([current]);
+              } else {
+                return acc;
+              }
+            }, []);
+            vm.geoLookupResults = reducedArray;
             console.log(response);
           })
           .catch(function(error) {
