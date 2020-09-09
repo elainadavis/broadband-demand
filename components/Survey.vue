@@ -2,9 +2,14 @@
   <div class="container">
     <div class="form-container" id="speedcheckcontainer">
       <div class="introtitle">
-        <h1>Community Survey</h1>
+        <h1>Area Broadband Assessment</h1>
         <br>
-        <h3 v-html="surveyData.intro"></h3>
+        <h3>Do you have slow internet? Do you have unreliable internet? Do you wish you had more options?</h3> 
+        <h3>Have you needed the internet more since the Pandemic started?</h3>
+        <br>
+        <h3>Tilson, (a network services firm), is conducting a Broadband Assessment for residential and business users in your area to determine opportunities to build new and improved high-speed, fiber optic cable-delivered broadband networks. To better assess the demand, we need to hear from users like you and understand your satisfaction, issues and concerns with your current internet service. We also need to understand your potential desire to purchase new service or switch from your current provider.</h3>
+        <br>
+        <h3>Thank you in advance for helping us better understand your needs and those of your community.</h3>
       </div>
       <div id="addressLookupContainer">
         <div class="formg">
